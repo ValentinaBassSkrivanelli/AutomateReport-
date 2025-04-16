@@ -1,0 +1,3 @@
+@echo off
+"C:\Users\vale\AppData\Local\Programs\Python\Python313\python.exe" "C:\Users\vale\OneDrive\Imágenes\Escritorio\BYU-I\GS497 - Profesional Project\week6.py"
+pause

@@ -1,0 +1,47 @@
+POWER BI VISUALIZATION
+
+CitiesbyContinent: How many cities are there per continent?
+
+SELECT country.Continent, COUNT(city.ID) AS TotalCities
+FROM city
+JOIN country ON city.CountryCode = country.Code
+GROUP BY country.Continent;
+
+Visualization: Column chart
+
+LanguagesbyCountry: What languages ​​are spoken in each continent or country?
+
+SELECT country.Name AS Country, country.Continent, countrylanguage.Language, countrylanguage.Percentage
+FROM countrylanguage
+JOIN country ON countrylanguage.CountryCode = country.Code
+ORDER BY country.Continent, country.Name;
+
+Visualization: Word cloud to see which languages ​​predominate
+
+
+PopulationperCountry: How many people are there in each country?
+
+SELECT 
+    Name AS Country,
+    Population
+FROM 
+    country;
+
+Visualization: a table with the country name and its population.
+
+CountryLanguagePercentage: How many people speak an official language in each country.
+SELECT 
+    cl.CountryCode,
+    c.Name AS Country,
+    cl.Language,
+    cl.Percentage,
+    ROUND(c.Population * (cl.Percentage / 100)) AS EstimatedSpeakers
+FROM 
+    countrylanguage cl
+JOIN 
+    country c ON cl.CountryCode = c.Code
+WHERE 
+    cl.IsOfficial = 'T';
+
+Visualization: Graph the total population of each country (bars, maps, etc.).
+
